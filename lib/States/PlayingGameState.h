@@ -1,0 +1,39 @@
+//
+// Created by loewi on 9/10/16.
+//
+
+#ifndef PONG_PLAYINGGAMESTATE_H
+#define PONG_PLAYINGGAMESTATE_H
+
+#include "GameState.h"
+#include "../Drawable.h"
+#include "../Updateable.h"
+#include "GameStateManager.h"
+#include "../Bat.h"
+#include "../Ball.h"
+
+namespace States {
+    class PlayingGameState : public GameState, public virtual Updateable, public virtual Drawable {
+    public:
+        void Entered();
+        void Exiting();
+        void Update(float elapsedTime);
+        void Draw(float elapsedFrameTime);
+    private:
+        std::shared_ptr<GameStateManager> gameStateManager;
+
+        Bat bat;
+        Ball ball;
+        sf::Text hud;
+        sf::Font font;
+
+        int score = 0;
+        int lives = 3;
+
+        std::stringstream ss;
+
+
+    };
+}
+
+#endif //PONG_PLAYINGGAMESTATE_H
