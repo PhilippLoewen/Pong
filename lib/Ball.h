@@ -31,7 +31,7 @@ public:
 
     void hitBottom();
 
-    void update();
+    void update(float );
 };
 
 

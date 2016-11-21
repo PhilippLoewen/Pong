@@ -6,7 +6,7 @@
 #include "PlayingGameState.h"
 namespace States {
     void PlayingGameState::Entered() {
-        gameStateManager->renderWindow->setFramerateLimit(800);
+        directRenderingGameStateManager->renderWindow->setFramerateLimit(800);
         font.loadFromFile("DS-DIGIT.TTF");
 
         // Set the font to our message
@@ -21,11 +21,11 @@ namespace States {
 
     void PlayingGameState::Update(float elapsedTime) {
             sf::Event event;
-            while (gameStateManager->renderWindow->pollEvent(event))
+            while (directRenderingGameStateManager->renderWindow->pollEvent(event))
             {
                     if (event.type == sf::Event::Closed)
                             // Someone closed the renderWindow- bye
-                            gameStateManager->renderWindow->close();
+                            directRenderingGameStateManager->renderWindow->close();
             }
 
             if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
@@ -42,11 +42,11 @@ namespace States {
             {
                     // quit...
                     // Someone closed the renderWindow- bye
-                    gameStateManager->renderWindow->close();
+                    directRenderingGameStateManager->renderWindow->close();
             }
 
 
-            if (ball.getPosition().top > gameStateManager->windowHeight)
+            if (ball.getPosition().top > directRenderingGameStateManager->windowHeight)
             {
                     ball.hitBottom();
                     lives--;
@@ -61,7 +61,7 @@ namespace States {
                     ball.reboundBatOrTop();
                     score++;
             }
-            if (ball.getPosition().left < 0 || ball.getPosition().left + ball.getPosition().width > gameStateManager->windowWidth)
+            if (ball.getPosition().left < 0 || ball.getPosition().left + ball.getPosition().width > directRenderingGameStateManager->windowWidth)
             {
                     ball.reboundSides();
             }
@@ -81,17 +81,17 @@ namespace States {
 
     void PlayingGameState::Draw(float elapsedFrameTime) {
             // Clear everything from the last frame
-            gameStateManager->renderWindow->clear(sf::Color(26, 128, 182,255));
+            directRenderingGameStateManager->renderWindow->clear(sf::Color(26, 128, 182,255));
 
-            gameStateManager->renderWindow->draw(bat.getShape());
+            directRenderingGameStateManager->renderWindow->draw(bat.getShape());
 
-            gameStateManager->renderWindow->draw(ball.getShape());
+            directRenderingGameStateManager->renderWindow->draw(ball.getShape());
 
             // Draw our score
-            gameStateManager->renderWindow->draw(hud);
+            directRenderingGameStateManager->renderWindow->draw(hud);
 
             // Show everything we just drew
-            gameStateManager->renderWindow->display();
+            directRenderingGameStateManager->renderWindow->display();
     }
 
     void PlayingGameState::Exiting() {

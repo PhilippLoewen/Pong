@@ -21,7 +21,7 @@ namespace States {
     class GameStateManager {
 
     public:
-        GameStateManager(sf::RenderWindow* window) : renderWindow(window) {
+        GameStateManager() {
 
         }
 
@@ -66,12 +66,6 @@ namespace States {
 
             return currentState;
         }
-
-        std::shared_ptr<sf::RenderWindow> renderWindow;
-
-        int windowWidth;
-
-        int windowHeight;
 
     };
 

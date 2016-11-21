@@ -9,8 +9,8 @@ namespace States {
 
     // ------------------------------------------------------------------------------------------- //
 
-    DirectRenderingGameStateManager::DirectRenderingGameStateManager(int windowWidth, int windowHeight)
-            : GameStateManager(new sf::RenderWindow(sf::VideoMode(windowWidth, windowHeight),"Pong")) {
+    DirectRenderingGameStateManager::DirectRenderingGameStateManager(unsigned int windowWidth, unsigned int windowHeight)
+            : renderWindow(new sf::RenderWindow(sf::VideoMode(windowWidth, windowHeight),"Pong")) {
 
     }
 

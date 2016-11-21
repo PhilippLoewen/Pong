@@ -8,7 +8,7 @@
 #include "GameState.h"
 #include "../Drawable.h"
 #include "../Updateable.h"
-#include "GameStateManager.h"
+#include "DirectRenderingGameStateManager.h"
 #include "../Bat.h"
 #include "../Ball.h"
 
@@ -20,7 +20,7 @@ namespace States {
         void Update(float elapsedTime);
         void Draw(float elapsedFrameTime);
     private:
-        std::shared_ptr<GameStateManager> gameStateManager;
+        std::shared_ptr<DirectRenderingGameStateManager> directRenderingGameStateManager;
 
         Bat bat;
         Ball ball;

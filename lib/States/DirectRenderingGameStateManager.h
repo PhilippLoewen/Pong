@@ -37,7 +37,7 @@ namespace States {
     private: typedef std::pair<std::shared_ptr<GameState>, Modality::Enum> GameStateModalityPair;
 
         /// <summary>Initializes a new game state manager</summary>
-    public: DirectRenderingGameStateManager(int windowWidth = 1024, int windowHeight = 768);
+    public: DirectRenderingGameStateManager(unsigned int windowWidth = 1024, unsigned int windowHeight = 768);
 
         /// <summary>
         ///   Destroys the game state manager, leaving and dropping any active game state
@@ -106,6 +106,8 @@ namespace States {
         /// <summary>All updateable game states from the last Hiding state</summary>
     private: std::vector<Updateable *> exposedUpdateables;
 
+    public:
+        std::shared_ptr<sf::RenderWindow> renderWindow;
     };
 
     // ------------------------------------------------------------------------------------------- //
