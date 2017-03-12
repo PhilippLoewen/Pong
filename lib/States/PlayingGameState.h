@@ -11,10 +11,12 @@
 #include "DirectRenderingGameStateManager.h"
 #include "../Bat.h"
 #include "../Ball.h"
+#include <sstream>
 
 namespace States {
     class PlayingGameState : public GameState, public virtual Updateable, public virtual Drawable {
     public:
+        PlayingGameState(const std::shared_ptr<directRenderingGameStateManager> &gameStateManager) : directRenderingGameStateManager(gameStateManager) {};
         void Entered();
         void Exiting();
         void Update(float elapsedTime);

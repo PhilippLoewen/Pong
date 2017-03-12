@@ -20,14 +20,14 @@ sf::RectangleShape Bat::getShape() {
     return batShape;
 }
 
-void Bat::moveLeft(float d) {
-    position.x -= batSpeed;
+void Bat::moveLeft(float elapsedFrameTime) {
+    position.x -= batSpeed * elapsedFrameTime;
 }
 
-void Bat::moveRight(float d) {
-    position.x += batSpeed;
+void Bat::moveRight(float elapsedFrameTime) {
+    position.x += batSpeed * elapsedFrameTime;
 }
 
-void Bat::update() {
+void Bat::update(float elapsedFrameTime) {
     batShape.setPosition(position);
 }

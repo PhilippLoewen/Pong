@@ -6,7 +6,7 @@
 #include "PlayingGameState.h"
 namespace States {
     void PlayingGameState::Entered() {
-        directRenderingGameStateManager->renderWindow->setFramerateLimit(800);
+        // directRenderingGameStateManager->renderWindow->setFramerateLimit(800);
         font.loadFromFile("DS-DIGIT.TTF");
 
         // Set the font to our message
@@ -46,7 +46,7 @@ namespace States {
             }
 
 
-            if (ball.getPosition().top > directRenderingGameStateManager->windowHeight)
+            if (ball.getPosition().top > directRenderingGameStateManager->renderWindow->getSize().y)
             {
                     ball.hitBottom();
                     lives--;
@@ -61,7 +61,7 @@ namespace States {
                     ball.reboundBatOrTop();
                     score++;
             }
-            if (ball.getPosition().left < 0 || ball.getPosition().left + ball.getPosition().width > directRenderingGameStateManager->windowWidth)
+            if (ball.getPosition().left < 0 || ball.getPosition().left + ball.getPosition().width > directRenderingGameStateManager->renderWindow->getSize().y)
             {
                     ball.reboundSides();
             }
@@ -71,8 +71,8 @@ namespace States {
                     score++;
             }
 
-            ball.update();
-            bat.update();
+            ball.update(elapsedTime);
+            bat.update(elapsedTime);
 
 
             ss << "Score: " << score << "    Lives: " << lives;

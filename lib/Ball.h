@@ -31,7 +31,7 @@ public:
 
     void hitBottom();
 
-    void update(float );
+    void update(float elapsedFrameTime);
 };
 
 

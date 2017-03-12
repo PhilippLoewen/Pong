@@ -40,9 +40,9 @@ void Ball::hitBottom() {
     position.x = 500;
 }
 
-void Ball::update() {
-    position.x += velocity.x;
-    position.y += velocity.y;
+void Ball::update(float elapsedFrameTime) {
+    position.x += velocity.x * elapsedFrameTime;
+    position.y += velocity.y * elapsedFrameTime;
 
     ballShape.setPosition(position);
 }

@@ -26,7 +26,7 @@ public:
 
     void moveRight(float d);
 
-    void update();
+    void update(float d);
 };
 
 
